@@ -2,7 +2,7 @@ import gradient from "gradient-string";
 import backup from "../src/index";
 import boxen from "boxen";
 import { rl, translations } from "../index";
-import chalk from "chalk"; 
+import chalk from "chalk";
 import { Client } from "discord.js-selfbot-v13";
 export function choiceinit(client: Client) {
   let clearall = () => {
@@ -35,7 +35,7 @@ export function choiceinit(client: Client) {
           creatorname();
           console.log(
             gradient(["red", "purple"])(
-              "Link: https://discord.gg/infinite-community-1014921352500756500"
+              "Link: https://discord.gg/t7sY6YHa2B-1209978061403979856"
             )
           );
           awaitenter(client);
@@ -84,7 +84,7 @@ export function creatorname() {
 
 export function menutext(client: Client) {
   creatorname();
-  const goodbyegudog = langat !== "en" ? gradient(["#2180db", "#75a1cb", "#78a5d3"])(["[0] Nos despedimos do Gudog com carinho, Adeus gudog\n","[0] Em homenagem ao gudog, Descanse em paz\n","[0] Em memória do Gudog, um administrador que nos deixou. Adeus, amigo\n"][Math.floor(Math.random() * 3)]) : null;
+  const goodbyegudog = langat !== "en" ? gradient(["#2180db", "#75a1cb", "#78a5d3"])(["[0] Nos despedimos do Gudog com carinho, Adeus gudog\n", "[0] Em homenagem ao gudog, Descanse em paz\n", "[0] Em memória do Gudog, um administrador que nos deixou. Adeus, amigo\n"][Math.floor(Math.random() * 3)]) : null;
   console.log((goodbyegudog ? goodbyegudog : '') + gradient(["#ff4500", "#ffa500", "#ff6347"])(t("menuText")));
   choiceinit(client);
 }
@@ -93,22 +93,37 @@ export function menutext(client: Client) {
 export function infouser(client: Client) {
   creatorname();
 
+  const user = client.user as any;
+
   console.log(
-    gradient(["#ff4500", "#ffa500", "#ff6347"])(
-      t(`Nome da conta: ${client.user.username}\nNome global da conta: ${client.user.globalName
-      }\nAvatar ${client.user.avatarURL({
+    gradient(["#ff4500", "#ffa500", "#ff6347"])(t(
+      `Nome da conta: ${user.username}
+Nome global da conta: ${user.globalName}
+Avatar: ${user.avatarURL({
         format: "png",
         dynamic: true,
         size: 1024,
-      })}\nBanner: ${client.user.bannerURL({
+      })}
+Banner: ${user.bannerURL({
         format: "png",
         dynamic: true,
-      })}\nID: ${client.user.id}\nData de criação da conta: ${client.user.createdAt
-      }\nGuildas: ${client.guilds.cache.size} \nNitro?: ${client.user.nitroType
-      }\nEmail: ${client.user.emailAddress}\nCelular: ${client.user.phoneNumber
-      }\nIdioma: ${client.settings.locale}\nTema: ${client.settings.theme}\nModo desenvolvedor: ${client.settings.developerMode}\nAfk Timeout: ${client.settings.afkTimeout}\nDM Scan Level: ${client.settings.DMScanLevel}\nModo compacto: ${client.settings.compactMode}\nPreview Link: ${client.settings.previewLink}`)
-    )
+      })}
+ID: ${user.id}
+Data de criação da conta: ${user.createdAt}
+Guildas: ${client.guilds.cache.size}
+Nitro?: ${user.nitroType ?? "Desconhecido"}
+Email: ${user.emailAddress ?? "Desconhecido"}
+Celular: ${user.phoneNumber ?? "Desconhecido"}
+Idioma: ${client.settings.locale}
+Tema: ${client.settings.theme}
+Modo desenvolvedor: ${client.settings.developerMode}
+Afk Timeout: ${client.settings.afkTimeout}
+DM Scan Level: ${client.settings.DMScanLevel}
+Modo compacto: ${client.settings.compactMode}
+Preview Link: ${client.settings.previewLink}`
+    ))
   );
+
   awaitenter(client);
 }
 
@@ -158,10 +173,10 @@ export async function Cloner(
         }*/
         const newGuild = await client.guilds.create(
           'Infinite Community Cloner',
-          {
-            icon:
-              'https://cdn.discordapp.com/attachments/1014927587954393098/1145100637281992784/infinite_logo.png',
-          }
+          // {
+          //   icon:
+          //     'https://media.discordapp.net/attachments/1312091596128387102/1355728460043259914/CAPA-PERFIL.gif',
+          // }
         );
 
         if (!newGuild) {
@@ -232,7 +247,7 @@ export async function Cloner(
         if (cloneOption === 3) {
           const template = await newGuild.createTemplate(
             `${guild.name}`,
-            `By Infinite community (https://discord.gg/infinite-community-1014921352500756500)`
+            `By Infinite community (https://discord.gg/t7sY6YHa2B-1209978061403979856)`
           );
           console.log(gradient(["#FFEB3B", "#FFC107", "#FF9800", "#FF5722"])(`» Template Url: ${template.url}`));
         }
@@ -258,7 +273,7 @@ export async function Cloner(
       errors++;
       rl.close();
     }
-    
+
   };
 
   rl.question(gradient(["#5bb409", "#6ed60e", "#e8fad8"])(t('ServerID')), async (guildId: string) => {
@@ -441,7 +456,7 @@ export async function configop(client: Client, functionName: string) {
       if (choice === "1") {
         configOptions.maxMessagesPerChannel = parseInt(
           await espop(
-            gradient(["purple", "pink"])(t('cloningmessage'))),10);
+            gradient(["purple", "pink"])(t('cloningmessage'))), 10);
         configOptions.jsonSave = await yop(
           gradient(["purple", "pink"])(
             t("savejsoninput")

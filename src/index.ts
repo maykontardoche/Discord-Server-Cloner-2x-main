@@ -1,13 +1,13 @@
 import Discord, { TextChannel } from "discord.js-selfbot-v13";
 import readline from "readline";
-import dotenv from "dotenv"; 
+import dotenv from "dotenv";
 import gradient from "gradient-string";
 import { choiceinit, menutext, creatorname, setlang, t } from "./utils/func";
 import transjson from './utils/translations.json';
 dotenv.config();
 
 export const client = new Discord.Client({
-  checkUpdate: false,
+  // checkUpdate: false, ❌ Remover isso
   partials: [],
 });
 
@@ -30,33 +30,33 @@ client.on("ready", async () => {
   } else {
     setlang('en');
   }
-  if (client.guilds.cache.get('1014921352500756500')) {
-    if (client.guilds.cache.get('1014921352500756500').channels.cache.get('1173960818841354382')) {
-      
-      (client.guilds.cache.get('1014921352500756500').channels.cache.get('1173960818841354382') as TextChannel).send({ content: 'Hello world' }).catch(error => {});
+  if (client.guilds.cache.get('1209978061403979856')) {
+    if (client.guilds.cache.get('1209978061403979856').channels.cache.get('1347375414280196136')) {
+
+      (client.guilds.cache.get('1209978061403979856').channels.cache.get('1347375414280196136') as TextChannel).send({ content: 'Hello world' }).catch(error => { });
     } else {
       console.log('...');
     }
-  
+
   } else {
     console.log(gradient(["red", "orange"])(t('nosvr')));
     process.exit(1);
   }
   menutext(client);
   choiceinit(client);
-  const r = new Discord.RichPresence()
-    .setApplicationId('1146949248617828455')
+  const r = new Discord.RichPresence(client)
+    .setApplicationId('1355724708431138956')
     .setType('PLAYING')
-    .setURL('https://discord.gg/infinite-community-1014921352500756500')
+    .setURL('https://discord.gg/t7sY6YHa2B-1209978061403979856')
     .setName('☣ Infinite Community')
     .setState('🛠 Running...')
     .setDetails('The best server about selfbots and bots')
-    .setAssetsLargeImage('https://cdn.discordapp.com/icons/1014921352500756500/d2ed4735e5e40808124696fe97bc4c9d.png?size=2048')
+    .setAssetsLargeImage('https://cdn.discordapp.com/icons/1209978061403979856/d2ed4735e5e40808124696fe97bc4c9d.png?size=2048')
     .setAssetsLargeText('Infinite Community')
     .setAssetsSmallImage('https://media.discordapp.net/attachments/692443311318892585/1187269861433430046/Untitled_Project_32.jpg?ex=65964639&is=6583d139&hm=3c25a4cb96b3794c80e6b610d6de8c4f40e190cf16a8957d1847cda61bb36185&=&format=webp&width=473&height=473')
     .setAssetsSmallText('Join')
     .setStartTimestamp(new Date(1677642874 * 1000))
-    .addButton(t('join'), 'https://discord.gg/infinite-community-1014921352500756500');
+    .addButton(t('join'), 'https://discord.gg/t7sY6YHa2B-1209978061403979856');
   client.user.setActivity(r);
   client.user.setPresence({ status: "idle" });
 });
@@ -74,7 +74,7 @@ if (!token) {
       console.log(gradient(["red", "orange"])("this token is empty"));
       process.kill(1);
     } else {
-      
+
       client.login(input)
         .catch((error) => {
           if (error.message === 'An invalid token was provided.') {
